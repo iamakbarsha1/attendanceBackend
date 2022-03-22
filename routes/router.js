@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const roomSchema = require("./roomSchema");
+const PostRouter = express.Router();
+const roomSchema = require("../roomSchema");
 
 // Create - _C_rud
 // router.post("/", async (req, res) => {
@@ -22,6 +23,14 @@ router.get("/room", (req, res) => {
 
   console.log(req.body);
 });
+
+// Posting the SignUp Details
+// PostRouter.post("/sign-up", (req, res) => {
+//   console.log("Body :", req.body);
+//   res.json({
+//     msg: "We Received your data",
+//   });
+// });
 
 router.get("/", (req, res) => {
   res.json("Router");

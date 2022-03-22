@@ -3,17 +3,31 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const cors = require("cors");
+const bodyparser = require("body-parser");
 
 const PORT = 1000;
 const dbUrl = `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
 
 // Middleware
-app.use(morgan("Akbar Sha S"));
+app.use(cors());
+app.use(morgan("tiny"));
+// app.use(express.json());
+// app.use(
+//   express.urlencoded({
+//     extended: false,
+//   })
+// );
+// Body-parser middleware - DATA PARSING
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Router
-const roomRouter = require("./router");
-app.use("/signUp", roomRouter);
+// const AllRouter = require("./routes");
+// app.use("/api", AllRouter);
+
+const PostRouter = require("./routes/PostRouter");
+app.use("/post", PostRouter);
 
 // MongoDB Connecting
 mongoose.connect(

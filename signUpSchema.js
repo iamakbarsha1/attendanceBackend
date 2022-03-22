@@ -18,14 +18,14 @@ const signUpSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  phoneNo: {
-    type: Number,
-    required: true,
-  },
-  roomNo: {
-    type: Number,
-    required: true,
-  },
+  // phoneNo: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // roomNo: {
+  //   type: Number,
+  //   required: true,
+  // },
 });
 
 module.exports = mongoose.model("SignUp", signUpSchema);
