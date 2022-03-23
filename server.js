@@ -20,14 +20,16 @@ app.use(morgan("tiny"));
 // );
 // Body-parser middleware - DATA PARSING
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // Router
 // const AllRouter = require("./routes");
 // app.use("/api", AllRouter);
 
 const PostRouter = require("./routes/PostRouter");
-app.use("/post", PostRouter);
+app.use("/api/post", PostRouter);
+const GetRouter = require("./routes/GetRouter");
+app.use("/api/get", GetRouter);
 
 // MongoDB Connecting
 mongoose.connect(
@@ -45,5 +47,5 @@ mongoose.connect(
 
 // PORT Listening
 app.listen(PORT, () => {
-  console.log(`Server is Running in : ${PORT}`);
+  console.log(`Server is Running in : http://localhost:${PORT}/`);
 });
