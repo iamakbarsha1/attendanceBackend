@@ -10,10 +10,12 @@ PostRouter.post("/signUp", (req, res) => {
   // res.json({ data: "hello" });
   newSignUp.save((err) => {
     if (err) {
-      res.status(500).json({
+      res.status(500).statusText("Error").json({
         msg: "Internal server error @PostRouter.post/signUp",
       });
     } else {
+      console.log(req.body);
+      console.log(req.body.fullName);
       res.json({
         msg: "Your data has been SAVED",
       });
