@@ -1,4 +1,3 @@
-const { response } = require("express");
 const express = require("express");
 const GetRouter = express.Router();
 const roomSchema = require("../roomSchema");
@@ -47,10 +46,28 @@ GetRouter.get("/all-users", (req, res) => {
 
 // get single user with id
 GetRouter.get("/user", (req, res) => {
-  signUpSchema.findById("623c13867213cfd49fef8f17").then((dbRes) => {
+  const id = _id;
+  signUpSchema.findById(id).then((dbRes) => {
     res.json(dbRes);
     console.log(dbRes);
   });
+});
+
+GetRouter.get("/user/:_id", (req, res) => {
+  const id = req.params._id;
+  signUpSchema
+    .findById(id)
+    .then((dbRes) => {
+      res.render("user", {
+        user: dbRes,
+        title: "User Details",
+      });
+      // res.json(dbRes);
+      console.log(dbRes);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = GetRouter;
