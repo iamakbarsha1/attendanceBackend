@@ -4,7 +4,7 @@ const signUpSchema = require("../signUpSchema");
 
 DeleteRouter.delete("/all-user", (req, res) => {
   signUpSchema
-    .find()
+    .findById()
     .then((dbRes) => {
       res.send(dbRes);
       console.log(req.body);
