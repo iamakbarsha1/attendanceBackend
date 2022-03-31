@@ -6,22 +6,16 @@ const signUpSchema = require("../signUpSchema");
 // Posting the SignUp Details
 PostRouter.post("/add-user", (req, res) => {
   const data = req.body;
-  const newSignUp = new signUpSchema(data);
-  // res.json({ data: "hello" });
-  newSignUp.save((err) => {
-    if (err) {
-      res.status(500).statusText("Error").json({
-        msg: "Internal server error @PostRouter.post/signUp",
-      });
-    } else {
-      console.log(req.body);
-      console.log(req.body.fullName);
-      res.json({
-        msg: "Your data has been SAVED",
-      });
-      // console.log(res);
-    }
-  });
+  signUpSchema(data)
+    .save()
+    .then((dbRes) => {
+      res.json({ data: "Student Registered Successfully", key: "SUCCESS" });
+    })
+    .catch((err) => {
+      res.json({ data: "Something went Wrong", key: "ERROR" });
+      console.log(err);
+    });
+
   //   {
   //     "fullName": "Akbar Sha S",
   //     "regNo": "1913181033035",
