@@ -4,7 +4,7 @@ const PostRouter = express.Router();
 const signUpSchema = require("../signUpSchema");
 
 // Posting the SignUp Details
-PostRouter.post("/signUp", (req, res) => {
+PostRouter.post("/add-user", (req, res) => {
   const data = req.body;
   const newSignUp = new signUpSchema(data);
   // res.json({ data: "hello" });

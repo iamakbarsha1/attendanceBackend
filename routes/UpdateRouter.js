@@ -1,17 +1,17 @@
 const express = require("express");
-const DeleteRouter = express.Router();
 const signUpSchema = require("../signUpSchema");
+const UpdateRouter = express.Router();
 
-DeleteRouter.delete("/all-user", (req, res) => {
+UpdateRouter.put("/all-users", (req, res) => {
   signUpSchema
-    .findById()
+    .find()
     .then((dbRes) => {
       res.send(dbRes);
-      console.log(req.body);
     })
     .catch((err) => {
       console.log(err);
     });
+  // console.log(req);
 });
 
-module.exports = DeleteRouter;
+module.exports = UpdateRouter;

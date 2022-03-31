@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyparser = require("body-parser");
 
-const PORT = 1000;
+const PORT = process.env.PORT || 1000;
 const dbUrl = `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
 
 // Middleware
@@ -31,6 +31,10 @@ const PostRouter = require("./routes/PostRouter");
 app.use("/api/post", PostRouter);
 const GetRouter = require("./routes/GetRouter");
 app.use("/api/get", GetRouter);
+const DeleteRouter = require("./routes/DeleteRouter");
+app.use("/api/delete", DeleteRouter);
+const UpdateRouter = require("./routes/UpdateRouter");
+app.use("/api/update", UpdateRouter);
 
 // MongoDB Connecting
 mongoose

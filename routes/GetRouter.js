@@ -58,11 +58,16 @@ GetRouter.get("/user/:_id", (req, res) => {
   signUpSchema
     .findById(id)
     .then((dbRes) => {
-      res.render("user", {
-        user: dbRes,
-        title: "User Details",
-      });
+      // res.render("user", {
+      //   user: dbRes,
+      //   title: "User Details",
+      // });
       // res.json(dbRes);
+      res.json({
+        status: "SUCCESS",
+        message: "Records Found",
+        data: dbRes,
+      });
       console.log(dbRes);
     })
     .catch((err) => {
