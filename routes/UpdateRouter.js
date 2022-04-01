@@ -3,14 +3,15 @@ const signUpSchema = require("../signUpSchema");
 const UpdateRouter = express.Router();
 
 UpdateRouter.put("/all-users", (req, res) => {
-  signUpSchema
-    .find()
-    .then((dbRes) => {
-      res.send(dbRes);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  console.log(req.body);
+  // signUpSchema
+  //   .updateOne({_id: })
+  //   .then((dbRes) => {
+  //     res.send(dbRes);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
   // console.log(req);
 });
 

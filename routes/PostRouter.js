@@ -9,7 +9,8 @@ PostRouter.post("/add-user", (req, res) => {
   signUpSchema(data)
     .save()
     .then((dbRes) => {
-      res.json({ data: "Student Registered Successfully", key: "SUCCESS" });
+      // res.json({ data: "Student Registered Successfully", key: "SUCCESS" });
+      res.json({ data: dbRes, key: "SUCCESS" });
     })
     .catch((err) => {
       res.json({ data: "Something went Wrong", key: "ERROR" });

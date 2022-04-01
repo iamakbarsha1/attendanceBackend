@@ -4,11 +4,6 @@ const roomSchema = require("../roomSchema");
 const signUpSchema = require("../signUpSchema");
 
 GetRouter.get("/test", (req, res) => {
-  //   res.json({
-  //     users: "akbar sha s is a user",
-  //   });
-  //   console.log(res);
-  //   console.log(req);
   res.send("Working...");
 });
 
@@ -37,10 +32,11 @@ GetRouter.get("/all-users", (req, res) => {
   signUpSchema
     .find()
     .then((dbRes) => {
-      res.send(dbRes);
+      res.json({ data: dbRes });
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
+      res.json({ data: "Something Wrong in get users" });
     });
 });
 
