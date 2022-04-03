@@ -5,16 +5,24 @@ const signUpSchema = require("../signUpSchema");
 
 // Posting the SignUp Details
 PostRouter.post("/add-user", (req, res) => {
-  const data = req.body;
-  signUpSchema(data)
+  // const data = req.body;
+  // console.log(data);
+  const newData = new signUpSchema({
+    fullName: req.body.fullName,
+    regNo: req.body.regNo,
+    dept: req.body.dept,
+    email: req.body.email,
+  });
+  newData
     .save()
     .then((dbRes) => {
       // res.json({ data: "Student Registered Successfully", key: "SUCCESS" });
+      console.log(dbRes);
       res.json({ data: dbRes, key: "SUCCESS" });
     })
     .catch((err) => {
       res.json({ data: "Something went Wrong", key: "ERROR" });
-      console.log(err);
+      // console.log(err);
     });
 
   //   {
