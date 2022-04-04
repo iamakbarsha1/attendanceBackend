@@ -8,7 +8,11 @@ const signUpSchema = mongoose.Schema(
       trim: true,
     },
     regNo: {
-      type: String,
+      type: Number,
+      required: true,
+    },
+    roomNo: {
+      type: Number,
       required: true,
     },
     dept: {

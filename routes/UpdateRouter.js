@@ -21,15 +21,15 @@ UpdateRouter.put("/all-users", (req, res) => {
           data: "UserData not Updated",
           key: "Error",
         });
-        res.json(dbRes);
+        // res.json(dbRes);
       } else {
         res.json({ data: "UserData Updated Successfully", key: "Success" });
 
-        res.json(dbRes);
+        // res.json(dbRes);
       }
     })
     .catch((err) => {
-      res.json({ data: "Error in @IpdateRouter /put/all-users" });
+      res.json({ data: "Error in @UpdateRouter /put/all-users" });
     });
 });
 

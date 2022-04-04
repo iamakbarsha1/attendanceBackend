@@ -6,10 +6,11 @@ const signUpSchema = require("../signUpSchema");
 // Posting the SignUp Details
 PostRouter.post("/add-user", (req, res) => {
   // const data = req.body;
-  // console.log(data);
+  console.log(req);
   const newData = new signUpSchema({
     fullName: req.body.fullName,
     regNo: req.body.regNo,
+    roomNo: req.body.roomNo,
     dept: req.body.dept,
     email: req.body.email,
   });
