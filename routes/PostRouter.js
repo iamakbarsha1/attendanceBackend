@@ -1,4 +1,5 @@
 const express = require("express");
+const roomSchema = require("../roomSchema");
 // const router = express.Router();
 const PostRouter = express.Router();
 const signUpSchema = require("../signUpSchema");
@@ -32,6 +33,30 @@ PostRouter.post("/add-user", (req, res) => {
   //     "dept": "BCA",
   //     "email": "iamakbarsha1@gmail.com"
   //  }
+});
+
+PostRouter.post(`/rooms`, (req, res) => {
+  console.log(req.body.roomNo);
+  const roomData = new roomSchema({
+    roomNo: req.body.roomNo,
+  });
+
+  roomData
+    .save()
+    .then((dbRes) => {
+      res.json({
+        data: dbRes,
+        key: "Success",
+      });
+    })
+    .catch((err) => {
+      res
+        .json({
+          data: `Something went Wrong @POST/rooms ${err}`,
+          key: "Error",
+        })
+        .statusCode(403);
+    });
 });
 
 module.exports = PostRouter;

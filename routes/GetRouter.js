@@ -67,8 +67,28 @@ GetRouter.get("/user/:_id", (req, res) => {
       console.log(dbRes);
     })
     .catch((err) => {
-      console.log(err);
+      res.json({ data: "Something Wrong in get /user/:_id" });
     });
+});
+
+GetRouter.get("/rooms", (req, res) => {
+  roomSchema.find().then((dbRes) => {
+    res.json({
+      data: dbRes,
+      key: "Success",
+    });
+  });
+  // .catch((err) => {
+  //   res.json({ key: "error", data: err });
+  //   console.log(err);
+  // });
+  // .catch((err) => {
+  //   res.json({ data: "Something Wrong in get rooms" });
+  // console.log(err);
+  // res.json({
+  //   data: err,
+  //   key: "Error",
+  // });
 });
 
 module.exports = GetRouter;
