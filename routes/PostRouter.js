@@ -23,7 +23,11 @@ PostRouter.post("/add-user", (req, res) => {
       res.json({ data: dbRes, key: "SUCCESS" });
     })
     .catch((err) => {
-      res.json({ data: "Something went Wrong", key: "ERROR" });
+      res.json({
+        data: `Something went Wrong @POST/add-user`,
+        err,
+        key: "ERROR",
+      });
       // console.log(err);
     });
 

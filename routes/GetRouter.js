@@ -91,10 +91,10 @@ GetRouter.get("/rooms", (req, res) => {
   // });
 });
 
-GetRouter.get("/view/:id", (req, res) => {
-  signUpSchema.findById({ id: req.query._id }).then((dbRes) => {
-    res.json(dbRes);
-  });
-});
+// GetRouter.get("/view/:id", (req, res) => {
+//   signUpSchema.findById({ id: req.query._id }).then((dbRes) => {
+//     res.json(dbRes);
+//   });
+// });
 
 module.exports = GetRouter;

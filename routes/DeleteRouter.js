@@ -1,4 +1,5 @@
 const express = require("express");
+const roomSchema = require("../roomSchema");
 const DeleteRouter = express.Router();
 const signUpSchema = require("../signUpSchema");
 
@@ -8,6 +9,18 @@ DeleteRouter.delete("/all-user/:id", (req, res) => {
     .then((dbRes) => {
       res.send(dbRes);
       // console.log(req.body);
+      console.log(`id Deleted is ${id}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+DeleteRouter.delete(`/rooms/:_id`, (req, res) => {
+  roomSchema
+    .findByIdAndDelete({ _id: req.params.id })
+    .then((dbRes) => {
+      res.json(dbRes);
       console.log(`id Deleted is ${id}`);
     })
     .catch((err) => {
