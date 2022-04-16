@@ -71,11 +71,12 @@ GetRouter.get("/user/:_id", (req, res) => {
     });
 });
 
+// get all rooms
 GetRouter.get("/rooms", (req, res) => {
   roomSchema.find().then((dbRes) => {
     res.json({
+      key: "Success /api/get/rooms",
       data: dbRes,
-      key: "Success",
     });
   });
   // .catch((err) => {

@@ -16,7 +16,7 @@ DeleteRouter.delete("/all-user/:id", (req, res) => {
     });
 });
 
-DeleteRouter.delete(`/rooms/:_id`, (req, res) => {
+DeleteRouter.delete(`/rooms/:id`, (req, res) => {
   roomSchema
     .findByIdAndDelete({ _id: req.params.id })
     .then((dbRes) => {
