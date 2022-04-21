@@ -7,7 +7,9 @@ const cors = require("cors");
 const bodyparser = require("body-parser");
 
 const PORT = process.env.PORT || 1000;
-const dbUrl = `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
+const dbUrl =
+  process.env.MONGODB_URI ||
+  `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
 
 // Middleware
 app.use(cors());
