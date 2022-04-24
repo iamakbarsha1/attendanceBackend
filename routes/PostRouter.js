@@ -4,6 +4,8 @@ const roomSchema = require("../roomSchema");
 const PostRouter = express.Router();
 const signUpSchema = require("../signUpSchema");
 
+const sendEmail = require("../mail");
+
 // Posting the SignUp Details
 PostRouter.post("/add-user", (req, res) => {
   // const data = req.body;
@@ -61,6 +63,20 @@ PostRouter.post(`/rooms`, (req, res) => {
         })
         .statusCode(403);
     });
+});
+
+PostRouter.post("/sendEmail", (req, res) => {
+  console.log(req.body);
+  const { name, email, msg } = req.body;
+  sendEmail(name, email, msg, (err, data) => {
+    if (err) {
+      res
+        .status(500)
+        .json({ message: "Something went Wrong @POST/rooms", key: "Error" });
+    } else {
+      res.json({ message: "Email Sent!" });
+    }
+  });
 });
 
 module.exports = PostRouter;
