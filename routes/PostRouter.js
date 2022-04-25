@@ -3,8 +3,56 @@ const roomSchema = require("../roomSchema");
 // const router = express.Router();
 const PostRouter = express.Router();
 const signUpSchema = require("../signUpSchema");
-
 const sendEmail = require("../mail");
+const multer = require("multer");
+const path = require("path");
+
+// configure storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    /*
+      Files will be saved in the 'uploads' directory. Make
+      sure this directory already exists!
+    */
+    cb(null, "./uploads");
+  },
+  filename: (req, file, cb) => {
+    /*
+      uuidv4() will generate a random ID that we'll use for the
+      new filename. We use path.extname() to get
+      the extension from the original file name and add that to the new
+      generated ID. These combined will create the file name used
+      to save the file on the server and will be available as
+      req.file.pathname in the router handler.
+    */
+    const newFilename = Date.now() + `${path.extname(file.originalname)}`;
+    cb(null, newFilename);
+  },
+});
+// create the multer instance that will be used to upload/save the file
+const upload = multer({ storage });
+
+PostRouter.post(
+  "/sendDataWithFile",
+  upload.single("selectedFile"),
+  (req, res) => {
+    console.log(req.file);
+    // /** When using the "single"
+    //   data come in "req.file" regardless of the attribute "name". **/
+    // var tmp_path = req.file.path;
+
+    // /** The original name of the uploaded file
+    //       stored in the variable "originalname". **/
+    // var target_path = "uploads/" + req.file.originalname;
+    /*
+    We now have a new req.file object here. At this point the file has been saved
+    and the req.file.filename value will be the name returned by the
+    filename() function defined in the diskStorage configuration. Other form fields
+    are available here in req.body.
+  */
+    res.send();
+  }
+);
 
 // Posting the SignUp Details
 PostRouter.post("/add-user", (req, res) => {

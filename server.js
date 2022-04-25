@@ -6,8 +6,13 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyparser = require("body-parser");
+const multer = require("multer");
+const uuidv4 = require("uuid");
+const path = require("path");
 
-const PORT = process.env.PORT || 1000;
+const PORT =
+  // process.env.PORT ||
+  1000;
 const dbUrl =
   process.env.MONGODB_URI ||
   `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
