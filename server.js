@@ -1,10 +1,10 @@
 // Third Party Module
 const express = require("express");
-
 const app = express();
-const mongoose = require("mongoose");
-const morgan = require("morgan");
 const cors = require("cors");
+const mongoose = require("mongoose");
+
+const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const multer = require("multer");
 const uuidv4 = require("uuid");
@@ -30,21 +30,20 @@ app.use(morgan("tiny"));
 app.use(express.json());
 // this helps to show the json in console.log rather than undefined
 app.use(express.urlencoded({ extended: true }));
-
 // Router
 // const AllRouter = require("./routes");
 // app.use("/api", AllRouter);
-
 const PostRouter = require("./routes/PostRouter");
 app.use("/api/post", PostRouter);
-const GetRouter = require("./routes/GetRouter");
-app.use("/api/get", GetRouter);
-const DeleteRouter = require("./routes/DeleteRouter");
-app.use("/api/delete", DeleteRouter);
-const UpdateRouter = require("./routes/UpdateRouter");
-app.use("/api/update", UpdateRouter);
+// const GetRouter = require("./routes/GetRouter");
+// app.use("/api/get", GetRouter);
+// const DeleteRouter = require("./routes/DeleteRouter");
+// app.use("/api/delete", DeleteRouter);
+// const UpdateRouter = require("./routes/UpdateRouter");
+// app.use("/api/update", UpdateRouter);
 
 // MongoDB Connecting
+
 mongoose
   .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((res) => {

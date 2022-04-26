@@ -1,9 +1,9 @@
 const express = require("express");
-const roomSchema = require("../roomSchema");
-// const router = express.Router();
 const PostRouter = express.Router();
-const signUpSchema = require("../signUpSchema");
 const sendEmail = require("../mail");
+
+const roomSchema = require("../roomSchema");
+const signUpSchema = require("../signUpSchema");
 const multer = require("multer");
 const path = require("path");
 
