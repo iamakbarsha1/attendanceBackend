@@ -35,12 +35,12 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/api", AllRouter);
 const PostRouter = require("./routes/PostRouter");
 app.use("/api/post", PostRouter);
-// const GetRouter = require("./routes/GetRouter");
-// app.use("/api/get", GetRouter);
-// const DeleteRouter = require("./routes/DeleteRouter");
-// app.use("/api/delete", DeleteRouter);
-// const UpdateRouter = require("./routes/UpdateRouter");
-// app.use("/api/update", UpdateRouter);
+const GetRouter = require("./routes/GetRouter");
+app.use("/api/get", GetRouter);
+const DeleteRouter = require("./routes/DeleteRouter");
+app.use("/api/delete", DeleteRouter);
+const UpdateRouter = require("./routes/UpdateRouter");
+app.use("/api/update", UpdateRouter);
 
 // MongoDB Connecting
 
@@ -56,5 +56,5 @@ mongoose
 
 // PORT Listening
 app.listen(PORT, () => {
-  console.log(`Server is Running in : http://localhost:${PORT}/`);
+  console.log(`Server is Running in : http://localhost:${PORT}`);
 });
