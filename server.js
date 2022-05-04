@@ -1,13 +1,18 @@
 // Third Party Module
 const express = require("express");
-
 const app = express();
-const mongoose = require("mongoose");
-const morgan = require("morgan");
 const cors = require("cors");
-const bodyparser = require("body-parser");
+const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 1000;
+const morgan = require("morgan");
+const bodyparser = require("body-parser");
+const multer = require("multer");
+const uuidv4 = require("uuid");
+const path = require("path");
+
+const PORT =
+  // process.env.PORT ||
+  1000;
 const dbUrl =
   process.env.MONGODB_URI ||
   `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
@@ -25,11 +30,9 @@ app.use(morgan("tiny"));
 app.use(express.json());
 // this helps to show the json in console.log rather than undefined
 app.use(express.urlencoded({ extended: true }));
-
 // Router
 // const AllRouter = require("./routes");
 // app.use("/api", AllRouter);
-
 const PostRouter = require("./routes/PostRouter");
 app.use("/api/post", PostRouter);
 const GetRouter = require("./routes/GetRouter");
@@ -40,6 +43,7 @@ const UpdateRouter = require("./routes/UpdateRouter");
 app.use("/api/update", UpdateRouter);
 
 // MongoDB Connecting
+
 mongoose
   .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((res) => {
@@ -52,5 +56,5 @@ mongoose
 
 // PORT Listening
 app.listen(PORT, () => {
-  console.log(`Server is Running in : http://localhost:${PORT}/`);
+  console.log(`Server is Running in : http://localhost:${PORT}`);
 });
