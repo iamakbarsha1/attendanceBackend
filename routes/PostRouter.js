@@ -127,19 +127,4 @@ PostRouter.post("/sendEmail", (req, res) => {
   });
 });
 
-PostRouter.post("/sendEmailPortfolio", (req, res) => {
-  console.log(req.body);
-  const { name, email, msg, phone } = req.body;
-  sendEmail(name, email, msg, phone, (err, data) => {
-    if (err) {
-      res.status(500).json({
-        message: "Something went Wrong @POST/sendEmailPortfolio",
-        key: "Error",
-      });
-    } else {
-      res.json({ message: "Email Sent!" });
-    }
-  });
-});
-
 module.exports = PostRouter;
