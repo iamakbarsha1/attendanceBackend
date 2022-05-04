@@ -18,8 +18,12 @@ const dbUrl =
   `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
 
 // Middleware
+// const baseURL = "http://localhost:1000";
+// const CloudURL = "https://ams-tnc-hostel.herokuapp.com/";
+const cloudFrontendURL = "https://portfolio-akbarsha.netlify.app/";
+const localFrontendURL = "http://localhost:3000/";
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: cloudFrontendURL || localFrontendURL,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
