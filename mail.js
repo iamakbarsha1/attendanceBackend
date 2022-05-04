@@ -3,19 +3,23 @@ const mailGun = require("nodemailer-mailgun-transport");
 
 const auth = {
   auth: {
-    api_key: "",
-    domain: "",
+    api_key: "5f6a796b828bc4b8543711ab692bd931-02fa25a3-c095dc91",
+    domain: "sandbox976a891cbb904c51a073d4475701592b.mailgun.org",
   },
 };
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
-const sendEmail = (name, email, msg, callBack) => {
+const sendEmail = (name, email, msg, phone, callBack) => {
   const mailOptions = {
     from: email,
     to: "iamakbarsha1@gmail.com",
-    subject: "Hello!, A mail fromMailGun via node.js & nodemailer",
-    text: msg,
+    subject: "Portfolio Form",
+    text: `I'm ${name}, I came across your portfolio on internet.
+${msg}
+Regards,
+${name}
+${phone}`,
   };
 
   transporter.sendMail(mailOptions, (err, data) => {
