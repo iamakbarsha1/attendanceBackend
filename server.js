@@ -6,8 +6,8 @@ const mongoose = require("mongoose");
 
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
-const multer = require("multer");
-const uuidv4 = require("uuid");
+// const multer = require("multer");
+// const uuidv4 = require("uuid");
 const path = require("path");
 
 const PORT =
@@ -18,7 +18,12 @@ const dbUrl =
   `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(morgan("tiny"));
 // app.use(express.json());
 // app.use(
