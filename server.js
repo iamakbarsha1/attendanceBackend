@@ -10,9 +10,7 @@ const bodyparser = require("body-parser");
 // const uuidv4 = require("uuid");
 const path = require("path");
 
-const PORT =
-  // process.env.PORT ||
-  4000;
+const PORT = process.env.PORT || 4000;
 const dbUrl =
   process.env.MONGODB_URI ||
   `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
