@@ -89,7 +89,7 @@ PostRouter.post("/add-user", (req, res) => {
   //  }
 });
 
-PostRouter.post(`/rooms`, (req, res) => {
+PostRouter.post("/rooms", (req, res) => {
   console.log(req.body.roomNo);
   const roomData = new roomSchema({
     roomNo: req.body.roomNo,
