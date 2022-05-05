@@ -10,22 +10,32 @@ const auth = {
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
-const sendEmail = (name, email, msg, phone, callBack) => {
+const sendEmail = (name, email, msg, callBack) => {
   const mailOptions = {
-    from: email,
-    to: "iamakbarsha1@gmail.com",
-    subject: "Portfolio Form",
-    text: `I'm ${name}, I came across your portfolio on internet.
-${msg}
+    //     from: email,
+    //     to: "iamakbarsha1@gmail.com",
+    //     subject: "Portfolio Form",
+    //     text: `I'm ${name}, I came across your portfolio on internet.
+    // ${msg}
+    // Regards,
+    // ${name}
+    // ${phone}`,
+    from: email, // sender email
+    to: "iamakbarsha1@gmail.com", // this is the receiver email id
+    // cc: ["iamakbarsha1@gmail.com", "akbar.430happy@gmail.com"],
+    // cc: [`iamakbarsha1@gmail.com, ${email}`],
+    subject: "attendance(Frontend & backend)",
+    text: `Dear Akbar Sha S, 
+
+I'm ${name},
+ 
+My message is:  ${msg}
+
 Regards,
-${name}
-${phone}`,
-    // =======
-    //     from: email, // sender email
-    //     to: "iamakbarsha1@gmail.com", // this is the receiver email id
-    //     subject: "Hello!, A mail fromMailGun via node.js & nodemailer",
-    //     text: `Hello!, I'm ${name}, ${msg}`,
-    // >>>>>>> 64a4699a5d989d1ce048586080d13406d73b0a9e
+${name},
+${email}
+
+mail via node.js & nodemailer(mailgun) from attendance(Frontend & backend)`,
   };
 
   transporter.sendMail(mailOptions, (err, data) => {

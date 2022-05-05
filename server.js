@@ -12,7 +12,7 @@ const path = require("path");
 
 const PORT =
   // process.env.PORT ||
-  1000;
+  4000;
 const dbUrl =
   process.env.MONGODB_URI ||
   `mongodb+srv://admin:admin@attendancems.uphej.mongodb.net/AttendanceMS?retryWrites=true&w=majority`;
@@ -20,11 +20,12 @@ const dbUrl =
 // Middleware
 // const baseURL = "http://localhost:1000";
 // const CloudURL = "https://ams-tnc-hostel.herokuapp.com/";
-const cloudFrontendURL = "https://portfolio-akbarsha.netlify.app/";
+// const cloudFrontendURL = "https://portfolio-akbarsha.netlify.app/";
+const cloudFrontendURL = "";
 const localFrontendURL = "http://localhost:3000/";
 const corsOptions = {
-  origin: cloudFrontendURL || localFrontendURL,
-  origin: cloudFrontendURL,
+  // origin: localFrontendURL,
+  // origin: cloudFrontendURL,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };

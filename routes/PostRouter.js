@@ -117,7 +117,8 @@ PostRouter.post("/sendEmail", (req, res) => {
   const { name, email, msg } = req.body;
   sendEmail(name, email, msg, (err, data) => {
     if (err) {
-      res.status(500).json({
+      // res.status(500).json({
+      res.json({
         message: "Something went Wrong @POST/sendEmail",
         key: "Error",
       });
